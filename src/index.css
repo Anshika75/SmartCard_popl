@@ -13,4 +13,7 @@
 .roboto{
     font-family: 'Roboto', sans-serif;
 }
-
+.menuActive{
+    background-color: #f7f7f7;
+    color: #000;
+}
