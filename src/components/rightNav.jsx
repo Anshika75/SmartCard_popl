@@ -4,7 +4,7 @@ import done from '../assets/done.png'
 export default function RightNav() {
     return (
         <>
-            <div className="w-[250px] flex flex-col items-start  py-8 px-3 bg-white rounded-3xl m-20 pb-16">
+            <div className="w-[250px] flex flex-col items-start  py-8 px-3 bg-white rounded-3xl mx-3 pb-16">
                 <p className='block text-black text-2xl roboto font-medium mt-8'>Get Started With BixID</p>
                 <p className='block text-black text-xl roboto font-normal mt-3 leading-[2rem]'>Complete this steps to make your BixID</p>
 

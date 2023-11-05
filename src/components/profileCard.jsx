@@ -7,7 +7,7 @@ import share from '../assets/share.png';
 export default function ProfileCard() {
     return (
         <>
-            <div className="w-[450px] h-[340px] bg-white rounded-lg flex flex-col items-center p-4">
+            <div className="w-[450px] h-[340px] bg-white rounded-lg flex flex-col items-center p-4 mx-3">
                 <div className='relative'>
                     <img src={Cover} alt="" />
                     <img className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2' src={Profile} alt="" />
