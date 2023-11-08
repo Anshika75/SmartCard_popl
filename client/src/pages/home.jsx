@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <div className="relative flex flex-col min-h-screen bg-[#F1F1F1] w-full">
-        <div className="flex flex-row w-full justify-between items-center py-4 px-6">
+        <div className="flex flex-row lg:hidden w-full justify-between items-center py-4 px-6">
           <img className='h-[30px]' src={menu} alt="" />
           <h1 className="text-5xl text-center text-black font-normal justHand">BixID &nbsp;</h1>
           <img className='h-[30px]' src={diamond} alt="" />
