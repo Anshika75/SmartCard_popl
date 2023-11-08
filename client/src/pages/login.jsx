@@ -13,11 +13,11 @@ function Login() {
   // Send A POST Request To The API Endpoint For Logging In and store user data in local storage
   const login = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:5000/api/login", {
+    const res = await fetch("http://localhost:9000/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ Username:username, Password:password }),
     });
     const data = await res.json();
     console.log(data);
@@ -51,6 +51,8 @@ function Login() {
               type="text"
               id="email"
               placeholder="Email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="appearance-none roboto rounded w-full py-2 px-3 text-gray-700 leading-tight bg-[#F7F7F7] focus:outline-none"
             />
           </div>
@@ -65,6 +67,8 @@ function Login() {
               type="passwordt"
               id="email"
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="appearance-none roboto rounded w-full py-2 px-3 text-gray-700 leading-tight bg-[#F7F7F7] focus:outline-none"
             />
             <p className="block text-black text-sm roboto font-bold my-2 text-right">

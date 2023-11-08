@@ -7,6 +7,7 @@ import smallPlus from '../assets/smallPlus.png'
 import share from '../assets/share.png';
 import chat from "../assets/chat.png"
 export default function Home() {
+  
   return (
     <>
       <div className="flex min-h-screen bg-[#F1F1F1] w-full">
