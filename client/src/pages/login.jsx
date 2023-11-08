@@ -21,9 +21,11 @@ function Login() {
     });
     const data = await res.json();
     console.log(data);
-    if (data.status === 200) {
-      localStorage.setItem("user", JSON.stringify(data.user));
-      window.location.href = "/";
+
+    if (data.status==200) {
+      console.log("Working");
+      localStorage.setItem("user", JSON.stringify(data['User_details']));
+      // window.location.href = "/";
     }
   };
 
