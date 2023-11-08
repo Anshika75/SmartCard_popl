@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Cover from '../assets/Cover.png'
 import Profile from '../assets/Profile.png'
 import edit from '../assets/edit.png';
 import share from '../assets/share.png';
 
 export default function ProfileCard() {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
     useEffect(() => {
         const usr = JSON.parse(localStorage.getItem("user"));
         setUser(usr);
     }, [])
-    if (!user) return <Redirect to="/login" />
+    if(!user) return <h1>
+        Not Logged In
+    </h1>
     if(user){
         console.log(user)
         return <>

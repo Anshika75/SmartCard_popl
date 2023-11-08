@@ -74,7 +74,7 @@ function Login() {
             <p className="block text-black text-sm roboto font-bold my-2 text-right">
               Forgot Password ?
             </p>
-            <button className="bg-black text-white w-full py-2 px-3 rounded-3xl my-8">
+            <button className="bg-black text-white w-full py-2 px-3 rounded-3xl my-8" onClick={login}>
               Sign in
             </button>
             <p className="block text-[#DBDBDB] text-sm roboto font-bold text-center">
