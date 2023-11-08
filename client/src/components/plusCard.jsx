@@ -1,5 +1,5 @@
 import React from 'react'
-import Plus from '../assets/plus.png'
+import Plus from '../assets/Plus.png'
 export default function PlusCard() {
     return (
         <>
