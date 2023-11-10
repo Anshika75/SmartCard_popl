@@ -54,19 +54,17 @@ const authenticationSchema = new Schema({
   Password: {
     type: String,
     required: true
-  },
-  Status_of_data: {
-    type: Boolean,
-    default: true
   }
+
 });
 
-const userSchema = new Schema({
-  UserID: String,
+const cardSchema = new Schema({
+  CardID: String,
   FirstName: String,
   LastName: String,
   ProfileImage: String,
   CoverImage: String,
+  CoverLogo: String,
   Contact: String,
   DOB: String,
   BusinessName: String,
@@ -77,9 +75,22 @@ const userSchema = new Schema({
   About: aboutSchema,
   Location: locationSchema,
   Gallery: gallerySchema,
-  Payment: paymentSchema,
-  Authentication: authenticationSchema
+  Payment: paymentSchema
+  
 });
+
+
+
+const userSchema = new Schema({
+
+displayName:String,
+displayProfile:String,
+email:String,
+Authentication: authenticationSchema,
+Cards:[cardSchema]
+})
+
+
 
 const User = mongoose.model('User', userSchema);
 
