@@ -46,7 +46,7 @@ export default function Home() {
             <img src={chat} alt="" />
           </div>
         </div>
-        <Cardfor/>
+        {/* <Cardfor/> */}
       </div>
     </>
   )

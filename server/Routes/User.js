@@ -103,7 +103,7 @@ router.post('/login', async (req, res) => {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
   
-      res.status(200).json({ "message": "Login successful" ,"User_details":user});
+      res.status(200).json({ "message": "Login successful", "status":200 ,"User_details":user});
     } catch (error) {
         // res.send("error falios")
       res.status(500).json({ error: 'Internal server error' });

@@ -1,7 +1,8 @@
 import React from 'react'
 import LeftNav from '../components/leftNav'
 import arrow from '../assets/arrow.png'
-import line from '../assets/line.png'
+
+import line from '../assets/Line.png'
 import userprofile from '../assets/userprofile.png'
 import dot from '../assets/dot.png'
 import share from '../assets/share.png';

@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Edit from './pages/edit';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <BrowserRouter>
