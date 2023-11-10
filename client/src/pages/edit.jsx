@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LeftNav from '../components/leftNav'
 import arrow from '../assets/arrow.png'
 
@@ -33,7 +33,23 @@ import orange from '../assets/orange.png'
 import pink from '../assets/pink.png'
 import white from '../assets/white.png'
 import color from '../assets/color.png'
+import { useState } from 'react'
 export default function Edit() {
+    const [edituser, setEdituser] = useState({})
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        setEdituser({
+            name: user.FirstName + " " + user.LastName,
+            location: user?.Location?.Address,
+            jobTitle: user.Position,
+            company: user.Company,
+            bio: user.AboutText,
+            colorTheme: "#0000FF"
+        });
+    }, [])
+    if (!edituser) return <h1> Not Logged In </h1>;
+    console.log(edituser);
+
     return (
         <>
             <div className="relative flex min-h-screen bg-[#F1F1F1] w-full">
@@ -130,14 +146,16 @@ export default function Edit() {
                                 <div className="flex flex-col w-full my-2 lg:mr-2">
                                     <p className="roboto text-[#828282]">Name:</p>
                                     <div className="flex items-center bg-[#F7F7F7] px-3 w-full rounded-xl">
-                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Name' />
+                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Name' value={edituser.name} onInput={(e)=>{setEdituser({...edituser,name:e.target.value})}}/>
                                         <p className='bg-white text-xs h-8 px-6 rounded-full border border-[#828282] text-[#828282] w-[160px] grid place-items-center'>+ Pronouns</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-col w-full my-2 lg:ml-2">
                                     <p className="roboto text-[#828282]">Location:</p>
                                     <div className="flex items-center bg-[#F7F7F7] px-3 w-full rounded-xl">
-                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] flex py-4 rounded-lg' type="text" placeholder='Location' />
+                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] flex py-4 rounded-lg' type="text" placeholder='Location' value={edituser.location} onInput={(e)=>{
+                                            setEdituser({...edituser,location:e.target.value})
+                                        }} />
                                     </div>
                                 </div>
                             </div>
@@ -145,34 +163,55 @@ export default function Edit() {
                                 <div className="flex flex-col w-full my-2 lg:mr-2">
                                     <p className="roboto text-[#828282]">Job Title:</p>
                                     <div className="flex items-center bg-[#F7F7F7] px-3 w-full rounded-xl">
-                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Job Title' />
+                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Job Title' value={edituser.jobTitle} 
+                                        onInput={(e)=>{
+                                            setEdituser({...edituser,jobTitle:e.target.value})
+                                        }}
+                                         />
                                     </div>
                                 </div>
                                 <div className="flex flex-col w-full my-2 lg:ml-2">
                                     <p className="roboto text-[#828282]">Company:</p>
                                     <div className="flex items-center bg-[#F7F7F7] px-3 w-full rounded-xl">
-                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] flex py-4 rounded-lg' type="text" placeholder='Company' />
+                                        <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] flex py-4 rounded-lg' type="text" placeholder='Company'
+                                        value={edituser.company}
+                                        onInput={(e)=>{
+                                            setEdituser({...edituser,company:e.target.value})
+                                        }}
+                                         />
                                     </div>
                                 </div>
                             </div>
                             <div className="flex flex-col w-full my-2 lg:mr-2">
                                 <p className="roboto text-[#828282]">Bio:</p>
                                 <div className="flex items-start bg-[#F7F7F7] rounded-xl px-3 w-full h-[100px]">
-                                    <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Bio' />
+                                    <input className='roboto bg-[#F7F7F7] outline-none font-medium text-[#202020] placeholder:text-[#C9C9C9] w-[70%] flex py-4 rounded-lg' type="text" placeholder='Bio'
+                                    value={edituser.bio}
+                                    onInput={(e)=>{
+                                        setEdituser({...edituser,bio:e.target.value})
+                                    }}
+                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col w-full my-2 lg:mr-2">
                                 <p className="roboto text-[#828282]">Choose Theme:</p>
                                 <div className="flex flex-col pt-4 bg-[#F7F7F7] rounded-xl px-3 lg:px-6 py-6 w-full min-h-[100px]">
                                     <div className="flex items-start justify-between">
-                                        <img src={color} alt="" />
-                                        <img src={white} alt="" />
-                                        <img src={blue} alt="" />
-                                        <img src={orange} alt="" />
-                                        <img src={pink} alt="" />
-                                        <img src={green} alt="" />
-                                        <img src={yellow} alt="" />
-                                        <img src={red} alt="" />
+                                        {/* Input type color with label as colorPickericon */}
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full">
+                                            <input type="color" id="favcolor" name="favcolor" value={edituser.colorTheme} onChange={(e)=>{ setEdituser({...edituser,colorTheme:e.target.value})}} />
+                                        </div>
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#FF0000]" onClick={(e)=>{
+                                            setEdituser({...edituser,colorTheme:"#FF0000"})
+                                        }}></div>
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#00FFAB]" onClick={(e)=>{ setEdituser({...edituser,colorTheme:"#00FFAB"})} }></div>
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#29BDC1]" onClick={(e)=>{ setEdituser({...edituser,colorTheme:"#29BDC1"})} }></div>
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#D84242]" onClick={(e)=>{ setEdituser({...edituser,colorTheme:"#D84242"})} }></div>
+                                        <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#913F92]" onClick={(e)=>{ setEdituser({...edituser,colorTheme:"#913F92"})} }></div>
+
+                                        
+                                                                                
+
                                     </div>
                                     <div className="bg-white flex justify-between border pl-3 lg:pl-12 items-center py-3 pr-3 lg:pr-6 border-[#C9C9C9] rounded-xl mt-7">
                                         <div className="roboto text-[#828282]">Color Links Icons</div>
@@ -197,13 +236,17 @@ export default function Edit() {
                             <p className="roboto text-[#67ABFA]">
                                 View Card <i class="fa-solid fa-link"></i>
                             </p>
-                            <div className="w-full flex flex-col pb-[200px] items-center border border-black rounded-xl min-h-[250px]">
+                            <div className={"w-full flex flex-col pb-[200px] items-center border border-black rounded-xl min-h-[250px] bg-["+`${edituser.colorTheme}`+"]"}>
                                 <div className='relative'>
                                     <img src={Cover} className='w-full h-[120px]' alt="" />
                                     <img className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3 rounded-full w-[70px] h-[70px]' src={Profile} alt="" />
                                 </div>
-                                <p className='block text-black  text-xl roboto font-normal text-center mt-10 '>Sanjeev</p>
-                                <h1 className="text-base font-normal text-center text-[#C9C9C9] roboto"> UI/UX Designer</h1>
+                                <p className='block text-black  text-xl roboto font-normal text-center mt-10 '>{
+                                    edituser.name
+                                }</p>
+                                <h1 className="text-base font-normal text-center text-[#C9C9C9] roboto">{
+                                    edituser.jobTitle
+                                }</h1>
 
                                 <button className='mx-1 mt-4 font-semibold text-sm lg:text-base flex flex-row justify-center itemx-center px-4 py-2 rounded-full bg-black text-white'>
                                     Save Contact
