@@ -20,6 +20,7 @@ import { useState } from "react";
 import PreviewProfileCard from "../components/EditCardPage/previewProfileCard";
 
 import EditAboutPage from "../components/EditCardPage/editAboutPage";
+import EditContentPage from "../components/EditCardPage/editContentPage";
 export default function EditCard() {
   const [selectedNav, setSelectedNav] = useState("about");
 
@@ -62,6 +63,7 @@ export default function EditCard() {
     content: {
       text: "Content",
       icon: content,
+      page: <EditContentPage editcard={editcard} setEditCard={setEditCard} />,
     },
     bixcode: {
       text: "BixCode",
