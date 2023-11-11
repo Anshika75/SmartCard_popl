@@ -49,7 +49,7 @@ export default function EditCard() {
       }
     });
   }, []);
-  if (!editcard) return <h1> Not Logged In </h1>;
+  // if (!editcard) return <h1> Not Logged In </h1>;
   console.log(editcard);
   const nav = {
     about: {
