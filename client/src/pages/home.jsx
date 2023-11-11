@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileCard from '../components/profileCard'
 import PlusCard from '../components/plusCard'
 import LeftNav from '../components/leftNav'
@@ -10,6 +10,14 @@ import menu from "../assets/menu.png"
 import diamond from "../assets/diamond.png"
 import Cardfor from '../components/cardfor'
 export default function Home() {
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, []);
+  if (user == null) {
+    window.location.href = "/login";
+  }
 
   return (
     <>
@@ -18,7 +26,6 @@ export default function Home() {
           <img className='h-[30px]' src={menu} alt="" />
           <h1 className="text-5xl text-center text-black font-normal justHand">BixID &nbsp;</h1>
           <img className='h-[30px]' src={diamond} alt="" />
-
         </div>
         <div className="flex min-h-screen w-full">
           <div className="hidden lg:flex w-full">
@@ -32,9 +39,12 @@ export default function Home() {
                 Share Card
               </button>
             </div>
-            <div className="flex mt-1 lg:mt-16">
+            <div className="flex mt-1 lmtg:-16">
               <div className="flex flex-col lg:flex-row">
-                <ProfileCard />
+                {
+                  user?.Cards?.map((card,i) => <ProfileCard {...card} key={i} />
+                  )
+                }
                 <PlusCard />
               </div>
               <div className="hidden lg:flex">
