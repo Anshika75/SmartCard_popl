@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../Models/User");
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
   const U = await User.find();
   res.json(U);
 });
@@ -35,10 +35,10 @@ router.post("/register", async (req, res) => {
         Authentication,
       });
       await newUser.save();
-      res.status(201).json({ message: "User registered successfully" });
+      res.status(201).json({ Message: "User registered successfully", Details:newUser });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: error.message , Message:"Internal server error" });
     }
   }
 });
