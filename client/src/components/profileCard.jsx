@@ -6,8 +6,8 @@ export default function ProfileCard({CoverImage,ProfileImage,FirstName,LastName,
 
     return (
         <>
-            <div className="w-[300px] lg:w-[450px] h-[290px] lg:h-[340px] bg-white rounded-lg flex flex-col items-center p-4 mx-3 my-3">
-                <div className='relative'>
+            <div className="w-[300px] lg:w-[400px] h-[290px] lg:h-[340px] bg-white rounded-lg flex flex-col items-center pb-4 overflow-hidden mx-3 my-3">
+                <div className='relative w-full'>
                     <img src={CoverImage} className='w-full h-[100px] lg:h-[140px]' alt="" />
                     <img className='absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3 rounded-full w-[75px] h-[75px] lg:w-[100px] lg:h-[100px]' src={ProfileImage} alt="" />
                 </div>

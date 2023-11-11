@@ -28,7 +28,7 @@ export default function Home() {
           <img className='h-[30px]' src={diamond} alt="" />
         </div>
         <div className="flex min-h-screen w-full">
-          <div className="hidden lg:flex w-full">
+          <div className="hidden lg:flex w-[20%]">
             <LeftNav />
           </div>
           <div className="flex flex-col w-full py-8 px-6">
@@ -39,8 +39,8 @@ export default function Home() {
                 Share Card
               </button>
             </div>
-            <div className="flex mt-1 lmtg:-16">
-              <div className="flex flex-col lg:flex-row">
+            <div className="flex mt-1 lg:mt-16">
+              <div className="grid w-[80%] grid-cols-1 place-items-center lg:grid-cols-2">
                 {
                   user?.Cards?.map((card,i) => <ProfileCard {...card} key={i} />
                   )
