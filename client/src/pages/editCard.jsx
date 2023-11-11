@@ -160,7 +160,7 @@ export default function EditCard() {
             </div>
             <div className="w-[25%] px-4 hidden lg:flex flex-col items-center border-l-2 border-l-[#F7F7F7] py-16">
               <p className="roboto text-[#828282]">Card Live Preview</p>
-              <p className="roboto text-[#67ABFA]">
+              <p className="roboto text-[#67ABFA] mb-4">
                 View Card <i className="fa-solid fa-link"></i>
               </p>
               <PreviewProfileCard card={editcard} />
