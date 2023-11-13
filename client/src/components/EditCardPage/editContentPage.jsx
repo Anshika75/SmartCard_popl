@@ -84,13 +84,8 @@ export default function EditContentPage() {
     const [modelOpen, setModelOpen] = useState(false);
 
 
-
-
-
-
-
   return (
-    <div className="w-full flex flex-col justify-center items-center relative">
+    <div className="w-full flex flex-col bg-[#F7F7F7] rounded-lg h-full justify-center items-center">
         {
             choosedSocialMedia.length > 0 ? choosedSocialMedia.map((item, index) => {
                 return (
@@ -101,17 +96,16 @@ export default function EditContentPage() {
                         <p className="text-[#202020] text-base roboto font-normal">{item.name}</p>
                     </div>
                 )
-            }): <div className="flex items-center flex-col">
-                   <h3 className="text-[#202020] text-base roboto font-medium">Your profile don't have any social media links</h3>
-                    {/* Add links to contact informations, websites, payment methods etc */}
-                    <p className="text-[#202020] text-base roboto font-normal">
-                        <span className="text-[#202020] text-base roboto font-normal">Add links to contact informations, websites, payment methods etc</span>
+            }): <div className="flex items-center flex-col p-5 lg:p-16">
+                   <h3 className="text-[#202020] roboto text-center font-semibold text-xl lg:text-2xl">This profile doesn’t have any linked content</h3>
+                    <p className="text-[#202020] text-sm lg:text-base roboto font-normal text-center lg:px-16 mt-1">
+                        Add links to contact information, website, payment methods, social networks and more.
                     </p>
                 </div>
         }
-        <button className="bg-[#202020] text-white text-base roboto font-semibold py-2 rounded-md px-[20%]" onClick={()=>{
+        <button className="bg-[#202020] text-white text-base roboto font-semibold py-2 rounded-full px-6 lg:px-12" onClick={()=>{
             setModelOpen(true)
-        }}>Add Links</button>
+        }}>+ &nbsp; &nbsp; Add links and Contect Info</button>
 
         {modelOpen && <IconsAddModel socialMedia={socialMedia} setModelOpen={setModelOpen}/>}
     </div>
