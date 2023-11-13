@@ -9,9 +9,6 @@ const socialItemSchema = new Schema({
   description: String // Description or additional information about the social media profile
 });
 
-const socialsSchema = new Schema({
-  items: [socialItemSchema]
-});
 
 const aboutSchema = new Schema({
   GSTIN: String,
@@ -71,7 +68,7 @@ const cardSchema = new Schema({
   Position: String,
   Designation: String,
   Website: String,
-  Socials: socialsSchema,
+  Socials: [socialItemSchema],
   About: aboutSchema,
   Location: locationSchema,
   Gallery: gallerySchema,

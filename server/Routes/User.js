@@ -7,7 +7,8 @@ router.get("/all", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { displayName, displayProfile, email, Authentication,Cards } = req.body;
+  const { displayName, displayProfile, email, Authentication, Cards } =
+    req.body;
   const Username = req.body.Authentication.Username;
   const Password = req.body.Authentication.Password;
 
@@ -35,10 +36,14 @@ router.post("/register", async (req, res) => {
         Authentication,
       });
       await newUser.save();
-      res.status(201).json({ Message: "User registered successfully", Details:newUser });
+      res
+        .status(201)
+        .json({ Message: "User registered successfully", Details: newUser });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: error.message , Message:"Internal server error" });
+      res
+        .status(500)
+        .json({ error: error.message, Message: "Internal server error" });
     }
   }
 });
@@ -117,7 +122,7 @@ router.patch("/update/:id", async (req, res) => {
       new: true,
     });
     if (update) {
-      console.log(update)
+      console.log(update);
       res.send(update);
     } else {
       res.status(404).json({ error: "User not found" });
@@ -125,6 +130,45 @@ router.patch("/update/:id", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+router.post("/edit-Card/:userID/:cardID", async (req, res) => {
+  try {
+    const updated_fields = req.body;
+    console.log(req.params);
+    const user = await User.findById(req.params.userID);
+    console.log(user.Cards);
+    const card = user.Cards.find(
+      (card) => card._id.toString() === req.params.cardID
+    );
+    if (!card) {
+      return res.status(404).json({ error: "Card not found" });
+    }
+    // Update the card
+    Object.assign(card, updated_fields);
+    await user.save();
+    res.send(card);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/add-card/:userID", async (req, res) => {
+  const userID = req.params.userID;
+  const newCard = req.body;
+  // try {
+    const user = await User.findById(userID);
+    console.log(user)
+    if (!user) {
+      res.json({ message: "User not Found" });
+    }
+    
+    user.Cards.push(newCard);
+    await user.save();
+    res.json({ success: true, message: "Card added successfully", "card":newCard });
+  // } catch (error) {
+  //   res.json({ message: "add card fail ", reason: error });
+  // }
 });
 
 router.post("/login", async (req, res) => {
