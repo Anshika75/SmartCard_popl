@@ -8,9 +8,23 @@ import companyPh from "../../assets/companyPh.png";
 import pfpPh from "../../assets/pfpPh.png";
 import toggle from "../../assets/toggle.png";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 function EditAboutPage({ editcard, setEditCard}) {
+  const [profilePicture, setProfilePicture] = useState(editcard.ProfileImage);
+  const [coverPhoto, setCoverPhoto] = useState(editcard.CoverImage);
+  const [companyLogo, setCompanyLogo] = useState(editcard.CompanyLogo);
+
+  useEffect(() => {
+    setEditCard({
+      ...editcard,
+      ProfileImage: profilePicture,
+      CoverImage: coverPhoto,
+      CompanyLogo: companyLogo,
+    });
+  }
+  , [profilePicture, coverPhoto, companyLogo]);
+  
   return (
     <div className="w-full flex flex-col">
       <div className="hidden lg:flex items-center">
@@ -20,24 +34,40 @@ function EditAboutPage({ editcard, setEditCard}) {
         </div>
       </div>
       <div className="hidden lg:flex mt-8">
-        <div className="flex flex-col items-center w-[30%]">
+
+        <input id="profilePicture" type="file" className="hidden"  onChange={(e)=>{
+          setProfilePicture((e.target.files[0]));
+        }}/>
+        <label htmlFor="profilePicture" className="flex flex-col items-center w-[30%]">
           <p className="roboto flex text-[#828282]">
             Profile Picture <img className="ml-1" src={info} alt="" />
           </p>
-          <img className="w-[50%] mt-4" src={pfp} alt="" />
-        </div>
-        <div className="flex flex-col items-center w-[50%]">
+          <img className="w-[50%] mt-4 rounded-full object-cover aspect-square" src={typeof profilePicture == "string"? profilePicture:URL.createObjectURL(profilePicture)} alt="" />
+        </label>
+
+        <input id="coverPhoto" type="file" className="hidden" onChange={(e)=>{
+          setCoverPhoto((e.target.files[0]));
+        }}/>
+        <label htmlFor="coverPhoto" className="flex flex-col items-center w-[30%]">
           <p className="roboto flex text-[#828282]">
             Cover Photo <img className="ml-1" src={info} alt="" />
           </p>
-          <img className="w-[80%] mt-4" src={cvr} alt="" />
-        </div>
-        <div className="flex flex-col items-center w-[30%]">
+          <img className="w-[50%] mt-4 rounded-full object-cover aspect-square" src={typeof coverPhoto == "string"? coverPhoto:URL.createObjectURL(coverPhoto)} alt="" />
+        </label>
+
+        <input id="companyLogo" type="file" className="hidden" onChange={
+          (e)=>{
+            setCompanyLogo((e.target.files[0]));
+          }
+        } />
+        <label htmlFor="companyLogo" className="flex flex-col items-center w-[30%]">
           <p className="roboto flex text-[#828282]">
-            Profile Picture <img className="ml-1" src={info} alt="" />
+            Company Logo <img className="ml-1" src={info} alt="" />
           </p>
-          <img className="w-[50%] mt-4" src={company} alt="" />
-        </div>
+          <img className="w-[50%] mt-4 rounded-full object-cover aspect-square" src={companyLogo&&(typeof companyLogo == "string"? companyLogo:URL.createObjectURL(companyLogo))} alt="" />
+        </label>
+
+
       </div>
       <div className="block lg:hidden">
         <div className="relative">

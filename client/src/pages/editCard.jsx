@@ -21,6 +21,7 @@ import PreviewProfileCard from "../components/EditCardPage/previewProfileCard";
 
 import EditAboutPage from "../components/EditCardPage/editAboutPage";
 import EditContentPage from "../components/EditCardPage/editContentPage";
+// import AWS from "aws-sdk";
 export default function EditCard() {
   const [selectedNav, setSelectedNav] = useState("about");
 
@@ -52,6 +53,81 @@ export default function EditCard() {
       }
     });
   }, []);
+  useEffect(() => {
+    return;
+    // Check is profile image is a string or a file , if it is file then upload it to aws s3 and get the url and set it to profile image
+    if (editcard && editcard.ProfileImage && typeof editcard.ProfileImage != "string") {
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+      });
+      const params = {
+        Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
+        Key: "ProfileImages/" + editcard.ProfileImage.name,
+        Body: editcard.ProfileImage,
+        ACL: "public-read",
+      };
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(data);
+        setEditCard({
+          ...editcard,
+          ProfileImage: data.Location,
+        });
+      });
+    }
+
+    // Check is cover image is a string or a file , if it is file then upload it to aws s3 and get the url and set it to cover image
+    if (editcard && editcard.CoverImage && typeof editcard.CoverImage != "string") {
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+      });
+      const params = {
+        Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
+        Key: "CoverImages/" + editcard.CoverImage.name,
+        Body: editcard.CoverImage,
+        ACL: "public-read",
+      };
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(data);
+        setEditCard({
+          ...editcard,
+          CoverImage: data.Location,
+        });
+      });
+    }
+
+    // Check is company logo is a string or a file , if it is file then upload it to aws s3 and get the url and set it to company logo
+    if (editcard && editcard.CompanyLogo && typeof editcard.CompanyLogo != "string") {
+      const s3 = new AWS.S3({
+        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+      });
+      const params = {
+        Bucket: process.env.REACT_APP_AWS_BUCKET_NAME,
+        Key: "CompanyLogos/" + editcard.CompanyLogo.name,
+        Body: editcard.CompanyLogo,
+        ACL: "public-read",
+      };
+      s3.upload(params, (err, data) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log(data);
+        setEditCard({
+          ...editcard,
+          CompanyLogo: data.Location,
+        });
+      });
+    }
+
+  }, [editcard]);
   if (!editcard) return <h1> Not Logged In </h1>;
   console.log(editcard);
   const nav = {
