@@ -30,14 +30,17 @@ export default function EditCard() {
   //     setCurrentEditPage(nav[selectedNav].page);
   //   }, [selectedNav])
   const [editcard, setEditCard] = useState(false);
+  const [user, setUser] = useState(false);
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const usr = JSON.parse(localStorage.getItem("user"));
+    setUser(usr);
     
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
 
-    user?.Cards?.map((card) => {
+    usr?.Cards?.map((card) => {
       if (card._id == id) {
         setEditCard({
           name: card.FirstName + " " + card.LastName,
@@ -231,7 +234,36 @@ export default function EditCard() {
                 <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full border-gray-300 border ">
                   Cancel
                 </button>
-                <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full bg-black text-white">
+                <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full bg-black text-white" onClick={(e)=>{
+                  e.preventDefault();
+                  fetch(
+                    `http://localhost:9000/user/edit-Card/${user._id}/${editcard._id}`,
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(editcard),
+                    }
+                  ).then((res) => {
+                    return res.json();
+                  }).then((data)=>{
+                    console.log(data);
+                  // update card in local storage
+                  const usr = JSON.parse(localStorage.getItem("user"));
+                  const newCards = usr.Cards.map((card)=>{
+                    if(card._id == editcard._id){
+                      return editcard;
+                    }
+                    return card;
+                  })
+                  usr.Cards = newCards;
+                  localStorage.setItem("user", JSON.stringify(usr));
+                  })
+                  
+                  
+                  
+                }}>
                   Update
                 </button>
               </div>

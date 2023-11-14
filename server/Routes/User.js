@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../Models/User");
 router.get("/all", async (req, res) => {
+  console.log("all users");
   const U = await User.find();
   res.json(U);
 });
@@ -133,11 +134,13 @@ router.patch("/update/:id", async (req, res) => {
 });
 
 router.post("/edit-Card/:userID/:cardID", async (req, res) => {
+  // res.send("edit card");
   try {
     const updated_fields = req.body;
     console.log(req.params);
     const user = await User.findById(req.params.userID);
     console.log(user.Cards);
+
     const card = user.Cards.find(
       (card) => card._id.toString() === req.params.cardID
     );
