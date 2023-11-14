@@ -83,7 +83,6 @@ export default function EditContentPage() {
     const [choosedSocialMedia, setChoosedSocialMedia] = useState([]);
     const [modelOpen, setModelOpen] = useState(false);
 
-
   return (
     <div className="w-full flex flex-col bg-[#F7F7F7] rounded-lg h-full justify-center items-center">
         {
@@ -107,7 +106,7 @@ export default function EditContentPage() {
             setModelOpen(true)
         }}>+ &nbsp; &nbsp; Add links and Contect Info</button>
 
-        {modelOpen && <IconsAddModel socialMedia={socialMedia} setModelOpen={setModelOpen}/>}
+        {modelOpen && <IconsAddModel socialMedia={socialMedia} setModelOpen={setModelOpen} setChoosedSocialMedia={setChoosedSocialMedia} choosedSocialMedia={choosedSocialMedia}/>}
     </div>
   )
 }
