@@ -21,6 +21,7 @@ import PreviewProfileCard from "../components/EditCardPage/previewProfileCard";
 
 import EditAboutPage from "../components/EditCardPage/editAboutPage";
 import EditContentPage from "../components/EditCardPage/editContentPage";
+import EditBixCodePage from "../components/EditCardPage/editBixCodePage";
 // import AWS from "aws-sdk";
 export default function EditCard() {
   const [selectedNav, setSelectedNav] = useState("about");
@@ -147,6 +148,7 @@ export default function EditCard() {
     bixcode: {
       text: "BixCode",
       icon: bix,
+      page: <EditBixCodePage editcard={editcard} setEditCard={setEditCard} />,
     },
     lead: {
       text: "Lead capture from",
