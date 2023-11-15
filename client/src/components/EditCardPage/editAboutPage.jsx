@@ -7,6 +7,7 @@ import cvrPh from "../../assets/cvrPh.png";
 import companyPh from "../../assets/companyPh.png";
 import pfpPh from "../../assets/pfpPh.png";
 import toggle from "../../assets/toggle.png";
+import color from "../../assets/color.png";
 
 import React, {useEffect, useState} from "react";
 
@@ -187,11 +188,12 @@ function EditAboutPage({ editcard, setEditCard}) {
         <div className="flex flex-col pt-4 bg-[#F7F7F7] rounded-xl px-3 lg:px-6 py-6 w-full min-h-[100px]">
           <div className="flex items-start justify-between">
             {/* Input type color with label as colorPickericon */}
-            <div className="flex items-center justify-center w-[30px] h-[30px] rounded-full">
+            <div className="relative flex items-center justify-center w-[30px] h-[30px] rounded-full">
               <input
                 type="color"
                 id="favcolor"
                 name="favcolor"
+                className="absolute top-0 left-0 w-[30px] h-[30px] opacity-0"
                 value={editcard.colorTheme}
                 onChange={(e) => {
                   setEditCard({
@@ -200,35 +202,48 @@ function EditAboutPage({ editcard, setEditCard}) {
                   });
                 }}
               />
+              <img src={color} alt="" />
             </div>
             <div
-              className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#FF0000]"
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#FFFFFF] border-[4px] border-[#c9c9c981]"
               onClick={(e) => {
-                setEditCard({ ...editcard, colorTheme: "#FF0000" });
+                setEditCard({ ...editcard, colorTheme: "#FFFFFF" });
               }}
             ></div>
             <div
-              className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#00FFAB]"
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#92C4FF]"
               onClick={(e) => {
-                setEditCard({ ...editcard, colorTheme: "#00FFAB" });
+                setEditCard({ ...editcard, colorTheme: "#92C4FF" });
               }}
             ></div>
             <div
-              className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#29BDC1]"
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#FBBC09]"
               onClick={(e) => {
-                setEditCard({ ...editcard, colorTheme: "#29BDC1" });
+                setEditCard({ ...editcard, colorTheme: "#FBBC09" });
               }}
             ></div>
             <div
-              className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#D84242]"
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#FF00F5]"
               onClick={(e) => {
-                setEditCard({ ...editcard, colorTheme: "#D84242" });
+                setEditCard({ ...editcard, colorTheme: "#FF00F5" });
               }}
             ></div>
             <div
-              className="flex items-center justify-center w-[30px] h-[30px] rounded-full bg-[#913F92]"
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#1BC100]"
               onClick={(e) => {
-                setEditCard({ ...editcard, colorTheme: "#913F92" });
+                setEditCard({ ...editcard, colorTheme: "#1BC100" });
+              }}
+            ></div>
+            <div
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#EBFF00]"
+              onClick={(e) => {
+                setEditCard({ ...editcard, colorTheme: "#EBFF00" });
+              }}
+            ></div>
+            <div
+              className="flex items-center justify-center cursor-pointer w-[30px] h-[30px] rounded-full bg-[#F1511B]"
+              onClick={(e) => {
+                setEditCard({ ...editcard, colorTheme: "#F1511B" });
               }}
             ></div>
           </div>

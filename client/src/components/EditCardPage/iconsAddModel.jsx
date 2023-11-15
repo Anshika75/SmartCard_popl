@@ -67,7 +67,7 @@ export default function IconsAddModel({
         <p className="text-[#202020] flex justify-between w-full roboto font-semibold text-lg mt-12 pb-4">
           Contact
         </p>
-        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-4 justify-between flex-wrap ">
+        {/* <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-4 justify-between flex-wrap ">
           {socialMedia.recommended.map((item, index) => {
             return (
               <div key={index}  className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl" onClick={()=>{
@@ -83,6 +83,63 @@ export default function IconsAddModel({
               </div>
             );
           })}
+        </div> */}
+        
+        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-4 justify-between flex-wrap ">
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={message} alt="" />
+            <span className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <p className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </p>
+            </span>
+          </div>
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={mail} alt="" />
+            <p className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <span className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </span>
+            </p>
+          </div>
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={instagram} alt="" />
+            <p className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <span className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </span>
+            </p>
+          </div>
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={message} alt="" />
+            <span className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <p className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </p>
+            </span>
+          </div>
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={mail} alt="" />
+            <p className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <span className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </span>
+            </p>
+          </div>
+          <div className="w-full py-3 px-2 flex items-center bg-[#F7F7F7] rounded-xl">
+            <img className="w-[30px] lg:w-[60px]" src={instagram} alt="" />
+            <p className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2">
+              Text
+              <span className="w-[30px] h-[30px] rounded-full bg-white grid place-items-center text-[#C7C7C7] cursor-pointer">
+                +
+              </span>
+            </p>
+          </div>
         </div>
         <div className="flex flex-row justify-between w-full mt-4">
           <button className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2" onClick={()=>{

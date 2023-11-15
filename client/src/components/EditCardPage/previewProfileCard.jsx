@@ -4,13 +4,13 @@ function PreviewProfileCard({card}) {
   return (
     <div
       className={
-        "w-full flex flex-col pb-[200px] items-center border border-black rounded-xl min-h-[250px] bg-[" +
+        "w-full flex flex-col pb-[200px] overflow-y-hidden items-center border border-black rounded-xl min-h-[250px] bg-[" +
         `${card.colorTheme}` +
         "]"
       }
     >
-      <div className="relative  backdrop-blur-xl">
-        <img src={card.CoverImage&&(typeof card.CoverImage == "string"? card.CoverImage:URL.createObjectURL(card.CoverImage))} className="w-full h-[120px]" alt="" />
+      <div className="relative backdrop-blur-xl w-full">
+        <img src={card.CoverImage&&(typeof card.CoverImage == "string"? card.CoverImage:URL.createObjectURL(card.CoverImage))} className="bg-red-400 w-full h-[120px]" alt="" />
         <img
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3 rounded-full w-[70px] h-[70px]"
           src={card.ProfileImage&&(typeof card.ProfileImage == "string"? card.ProfileImage:URL.createObjectURL(card.ProfileImage))}
