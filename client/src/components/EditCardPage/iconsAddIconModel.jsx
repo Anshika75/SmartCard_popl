@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function AddIconModel({ choosedIcon , setAddItemModelOpen, setChoosedSocialMedia, choosedSocialMedia}) {
+  const [link, setLink] = React.useState("");
   return (
     <div className="flex flex-col items-center justify-center absolute top-0 left-0 h-screen w-full bg-[#d9d9d96a]">
       <div className="card flex flex-col items-start justify-start w-[90%] lg:w-[50%] lg:max-w-[1000px] h-[90%] bg-white rounded-lg shadow-md p-6 overflow-visible">
@@ -13,7 +14,7 @@ export default function AddIconModel({ choosedIcon , setAddItemModelOpen, setCho
               Select from our wide variety of link and contact info below.
             </p>
             <div className="bg-[#F7F7F7] p-1 rounded-full w-full mt-4 lg:mt-0 lg:w-[50%] text-[#C9C9C9] roboto text-left">
-              <i class="fa-solid fa-magnifying-glass mx-4"></i>
+              <i className="fa-solid fa-magnifying-glass mx-4"></i>
               Search
             </div>
           </div>
@@ -27,6 +28,11 @@ export default function AddIconModel({ choosedIcon , setAddItemModelOpen, setCho
             <input
               className="text-[#202020] flex justify-between w-full roboto font-semibold text-sm items-center lg:text-lg ml-2"
               placeholder="Enter profile link"
+              value={link}
+              onInput={(e) => {
+                setLink(e.target.value);
+              }}
+
             />
           </div>
           <div className="flex flex-row justify-between w-full mt-4">
@@ -40,7 +46,7 @@ export default function AddIconModel({ choosedIcon , setAddItemModelOpen, setCho
               (event)=>{
                 event.preventDefault();
                 setAddItemModelOpen(null);
-                setChoosedSocialMedia([...choosedSocialMedia, choosedIcon]);
+                setChoosedSocialMedia([...choosedSocialMedia, {...choosedIcon, link: link}]);
               }
             }>
               Add

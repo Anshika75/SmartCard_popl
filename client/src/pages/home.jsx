@@ -9,7 +9,12 @@ import chat from "../assets/chat.png"
 import menu from "../assets/menu.png"
 import diamond from "../assets/diamond.png"
 import Cardfor from '../components/cardfor'
+
 export default function Home() {
+  const logout = () => {
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  };
   const [user, setUser] = useState({});
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));

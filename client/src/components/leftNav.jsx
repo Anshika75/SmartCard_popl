@@ -27,6 +27,12 @@ export default function LeftNav() {
           <p className="flex items-center text-[#C9C9C9] font-medium roboto text-base my-6 py-3 px-2 rounded-xl w-full transition-all hover:bg-[#f7f7f7] hover:text-black cursor-pointer">
             <img className='mr-4 w-6' src={settings} alt="" /> Settings
           </p>
+          <p onClick={(e)=>{
+            localStorage.removeItem("user");
+            window.location.href="/login"
+          }} className="flex items-center text-[#C9C9C9] font-medium roboto text-base my-6 py-3 px-2 rounded-xl w-full transition-all hover:bg-[#f7f7f7] hover:text-black cursor-pointer">
+            <img className='mr-4 w-6' src={settings} alt="" /> Logout
+          </p>
         </div>
         <img className='py-12 pb-32' src={qr} alt="" />
         <button className='w-full mx-1 flex flex-row justify-center itemx-center px-4 py-3 rounded-xl bg-black text-white font-bold roboto'>

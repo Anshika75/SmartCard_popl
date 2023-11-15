@@ -9,7 +9,7 @@ function PreviewProfileCard({card}) {
         "]"
       }
     >
-      <div className="relative">
+      <div className="relative  backdrop-blur-xl">
         <img src={card.CoverImage&&(typeof card.CoverImage == "string"? card.CoverImage:URL.createObjectURL(card.CoverImage))} className="w-full h-[120px]" alt="" />
         <img
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/3 rounded-full w-[70px] h-[70px]"
