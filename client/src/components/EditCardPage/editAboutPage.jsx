@@ -27,8 +27,8 @@ function EditAboutPage({ editcard, setEditCard }) {
   }, [profilePicture, coverPhoto, companyLogo]);
 
   return (
-    <div className="flex w-full min-w-fit">
-      <div className="w-full lg:w-[55%] flex flex-col py-16 px-4 lg:px-4">
+    <div className="flex w-fit">
+      <div className="w-full lg:w-[75%] flex flex-col py-16 px-4 lg:px-4">
         <div className="w-full flex flex-col">
           <div className="hidden lg:flex items-center">
             <p className="roboto text-[#828282]">Card Title:</p>
@@ -300,6 +300,8 @@ function EditAboutPage({ editcard, setEditCard }) {
             </div>
           </div>
         </div>
+
+
 
         <div className="flex w-full justify-end self-end lg:justify-end items-center mt-4">
           <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full border-gray-300 border ">

@@ -3,7 +3,7 @@ import PreviewProfileCard from "./previewProfileCard";
 
 function EditBixCodePage({ editcard, setEditCard }) {
   return (
-    <div className="flex w-full min-w-fit">
+    <div className="flex w-fit">
       <div className="w-full lg:w-[55%] flex flex-col py-16 px-4 lg:px-4">
         <div className="flex flex-col items-center w-[100%] py-8 px-6 bg-white rounded-tr-3xl rounded-br-3xl">
           <div className="flex flex-col items-center w-[100%] py-8 px-6 bg-white rounded-tr-3xl rounded-br-3xl">

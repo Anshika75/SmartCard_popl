@@ -93,7 +93,7 @@ export default function EditContentPage({ editcard, setEditCard }) {
   }, [choosedSocialMedia]);
   return (
     <div className="flex w-full min-w-fit">
-      <div className="w-full lg:w-[55%] flex flex-col py-16 px-4 lg:px-4">
+      <div className="w-full lg:w-[75%] flex flex-col py-16 px-4 lg:px-4">
         <div className="w-full min-w-fit flex flex-col bg-[#F7F7F7] rounded-lg h-full items-center gap-5">
           {choosedSocialMedia.length > 0 ? (
             choosedSocialMedia.map((item, index) => {
