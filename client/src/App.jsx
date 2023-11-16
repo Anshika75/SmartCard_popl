@@ -15,7 +15,6 @@ function App() {
           <Route path="/editCard" element={<EditCard />} />
       </Routes>
     </BrowserRouter>
-
   )
 }
 

@@ -24,7 +24,7 @@ function Login() {
 
     if (data.status==200) {
       console.log("Working");
-      localStorage.setItem("user", JSON.stringify(data['User_details']));
+      StateMananger.localStorage.setItem("user", JSON.stringify(data['User_details']));
       window.location.href = "/home";
     }
   };

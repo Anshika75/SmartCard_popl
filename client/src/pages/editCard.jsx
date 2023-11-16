@@ -34,7 +34,7 @@ export default function EditCard() {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    const usr = JSON.parse(localStorage.getItem("user"));
+    const usr = JSON.parse(StateMananger.localStorage.getItem("user"));
     setUser(usr);
     
 
@@ -252,7 +252,7 @@ export default function EditCard() {
                   }).then((data)=>{
                     console.log(data);
                   // update card in local storage
-                  const usr = JSON.parse(localStorage.getItem("user"));
+                  const usr = JSON.parse(StateMananger.localStorage.getItem("user"));
                   const newCards = usr.Cards.map((card)=>{
                     if(card._id == editcard._id){
                       return editcard;
@@ -260,7 +260,7 @@ export default function EditCard() {
                     return card;
                   })
                   usr.Cards = newCards;
-                  localStorage.setItem("user", JSON.stringify(usr));
+                  StateMananger.localStorage.setItem("user", JSON.stringify(usr));
                   })
                   
                   
