@@ -12,7 +12,7 @@ import diamond from "../assets/diamond.png"
 export default function Home() {
   const [user, setUser] = useState({});
   useEffect(() => {
-    const user = JSON.parse(Wind.StateMananger.localStorage.getItem("user"));
+    const user = JSON.parse(StateMananger.localStorage.getItem("user"));
     setUser(user);
   }, []);
   if (user == null) {

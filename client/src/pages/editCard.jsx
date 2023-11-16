@@ -36,7 +36,6 @@ export default function EditCard() {
   useEffect(() => {
     const usr = JSON.parse(StateMananger.localStorage.getItem("user"));
     setUser(usr);
-    
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
@@ -60,7 +59,11 @@ export default function EditCard() {
   useEffect(() => {
     return;
     // Check is profile image is a string or a file , if it is file then upload it to aws s3 and get the url and set it to profile image
-    if (editcard && editcard.ProfileImage && typeof editcard.ProfileImage != "string") {
+    if (
+      editcard &&
+      editcard.ProfileImage &&
+      typeof editcard.ProfileImage != "string"
+    ) {
       const s3 = new AWS.S3({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
@@ -84,7 +87,11 @@ export default function EditCard() {
     }
 
     // Check is cover image is a string or a file , if it is file then upload it to aws s3 and get the url and set it to cover image
-    if (editcard && editcard.CoverImage && typeof editcard.CoverImage != "string") {
+    if (
+      editcard &&
+      editcard.CoverImage &&
+      typeof editcard.CoverImage != "string"
+    ) {
       const s3 = new AWS.S3({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
@@ -108,7 +115,11 @@ export default function EditCard() {
     }
 
     // Check is company logo is a string or a file , if it is file then upload it to aws s3 and get the url and set it to company logo
-    if (editcard && editcard.CompanyLogo && typeof editcard.CompanyLogo != "string") {
+    if (
+      editcard &&
+      editcard.CompanyLogo &&
+      typeof editcard.CompanyLogo != "string"
+    ) {
       const s3 = new AWS.S3({
         accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
@@ -130,7 +141,6 @@ export default function EditCard() {
         });
       });
     }
-
   }, [editcard]);
   if (!editcard) return <h1> Not Logged In </h1>;
   console.log(editcard);
@@ -230,53 +240,7 @@ export default function EditCard() {
               selectedNav={selectedNav}
               setSelectedNav={setSelectedNav}
             />
-            <div className="w-full lg:w-[55%] flex flex-col py-16 px-4 lg:px-4">
-              {nav[selectedNav].page}
-              <div className="flex w-full justify-end self-end lg:justify-end items-center mt-4">
-                <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full border-gray-300 border ">
-                  Cancel
-                </button>
-                <button className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full bg-black text-white" onClick={(e)=>{
-                  e.preventDefault();
-                  fetch(
-                    `http://localhost:9000/user/edit-Card/${user._id}/${editcard._id}`,
-                    {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify(editcard),
-                    }
-                  ).then((res) => {
-                    return res.json();
-                  }).then((data)=>{
-                    console.log(data);
-                  // update card in local storage
-                  const usr = JSON.parse(StateMananger.localStorage.getItem("user"));
-                  const newCards = usr.Cards.map((card)=>{
-                    if(card._id == editcard._id){
-                      return editcard;
-                    }
-                    return card;
-                  })
-                  usr.Cards = newCards;
-                  StateMananger.localStorage.setItem("user", JSON.stringify(usr));
-                  })
-                  
-                  
-                  
-                }}>
-                  Update
-                </button>
-              </div>
-            </div>
-            <div className="w-[25%] px-4 hidden lg:flex flex-col items-center border-l-2 border-l-[#F7F7F7] py-16">
-              <p className="roboto text-[#828282]">Card Live Preview</p>
-              <p className="roboto text-[#67ABFA] mb-4">
-                View Card <i className="fa-solid fa-link"></i>
-              </p>
-              <PreviewProfileCard card={editcard} />
-            </div>
+            {nav[selectedNav].page}
           </div>
         </div>
       </div>
