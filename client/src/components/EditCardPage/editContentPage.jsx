@@ -103,14 +103,14 @@ export default function EditContentPage({ editcard, setEditCard }) {
                   key={index}
                 >
                   <div className="w-[50px] h-[50px] rounded-full bg-[#F7F7F7] flex items-center justify-center mr-2">
-                    <i className={item.icon}></i>
+                  <img className="w-[30px] lg:w-[60px]" src={"./src/"+item.logo} alt="" />
                   </div>
                   <div>
                     <p className="text-[#202020] text-base roboto font-normal">
                       {item.name}
                     </p>
                     <p className="text-[#181156] text-base roboto font-normal">
-                      {item.link}
+                      {item.socialHandle}
                     </p>
                   </div>
                 </div>
@@ -154,6 +154,7 @@ export default function EditContentPage({ editcard, setEditCard }) {
             className="mx-1 text-sm lg:text-base flex flex-row justify-center itemx-center px-12 py-2 rounded-full bg-black text-white"
             onClick={(e) => {
               e.preventDefault();
+              const user = JSON.parse(StateMananger.localStorage.getItem("user"));
               fetch(
                 `http://localhost:9000/user/edit-Card/${user._id}/${editcard._id}`,
                 {

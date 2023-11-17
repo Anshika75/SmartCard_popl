@@ -46,7 +46,7 @@ export default function AddIconModel({ choosedIcon , setAddItemModelOpen, setCho
               (event)=>{
                 event.preventDefault();
                 setAddItemModelOpen(null);
-                setChoosedSocialMedia([...choosedSocialMedia, {...choosedIcon, link: link}]);
+                setChoosedSocialMedia([...choosedSocialMedia, {...choosedIcon, socialHandle: link}]);
               }
             }>
               Add
